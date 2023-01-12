@@ -44,9 +44,9 @@ const PeoplePublic = (): ReactElement => {
 
   return (
     <>
-      <header className='bg-white shadow-lg py-1'>
+      <header className='bg-black shadow-lg py-4'>
         <div className='container'>
-          <img className='max-w-[200px]' src="/logo.png" alt="" />
+          <img className='max-w-[120px]' src="/logo-blanco.png" alt="" />
         </div>
       </header>
       <div className='container'>

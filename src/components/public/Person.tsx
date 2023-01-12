@@ -92,8 +92,8 @@ const PersonDetail = ({ id = '', dni = '' }: PersonDetailProps): ReactElement =>
 
           <div>
             <p>Organiza y certifica</p>
-            <div className='w-[350px]'>
-              <img className='w-full' src="/logo.png" alt="" />
+            <div className='w-[250px] mt-2'>
+              <img className='' src="/logo.png" alt="" />
             </div>
           </div>
 
