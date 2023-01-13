@@ -54,6 +54,9 @@ const LoginView = (): ReactElement => {
   return (
     <div className='grid place-items-center h-screen container '>
       <div className='w-full max-w-[600px]'>
+        <div className='flex justify-center mb-5'>
+          <img className='max-w-[300px]' src="/logo.png" alt="" />
+        </div>
         <h2 className='block uppercase font-medium text-xl'>Login</h2>
         <form onSubmit={handleSubmit}>
           <input
@@ -63,8 +66,11 @@ const LoginView = (): ReactElement => {
             className='block w-full h-10 px-2 border-b border-solid border-blue-dark outline-none  mb-5'
             onChange={handleChange} type="password" placeholder='password' value={data.password} name='password'/>
           <p className='m-0 my-1 text-red lowercase'>{error}</p>
-          <button className='bg-red text-white px-5 py-2 rounded-lg text-lg' type='submit'>Login</button>
+          <button className='block w-full bg-red text-white px-5 py-2 rounded-lg text-lg' type='submit'>Login</button>
         </form>
+        <div className='flex justify-center mt-6'>
+          <img className='max-w-[200px] contrast-50' src="/brand.png" alt="" />
+        </div>
       </div>
     </div>
   )

@@ -107,7 +107,7 @@ const Table = ({ columns, data, sortIcon, setSortColumn, onRowClick = (id) => { 
                       key={row.original.id}
                       className={`bg-white border-b transition duration-300 ease-in-out ${selectedRows.includes(row.original.id) ? 'bg-blue text-white' : 'hover:bg-gray-200'}`}
                     >
-                      <th className='max-w-[40px]'> <input type="checkbox" id={row.original.id} onChange={handleChangeCheckbox}/> </th>
+                      <th className='max-w-[40px]'> <input type="checkbox" id={row.original.id} onChange={handleChangeCheckbox} checked={selectedRows.includes(row.original.id)}/> </th>
                       {row.cells.map((cell, index) => (
                         <td
                           {...cell.getCellProps()}
