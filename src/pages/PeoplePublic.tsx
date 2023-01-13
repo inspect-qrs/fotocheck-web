@@ -52,7 +52,7 @@ const PeoplePublic = (): ReactElement => {
       <div className='container'>
         <div className='mt-5'>
           <div className='mb-5'>
-            <label className='font-medium uppercase'>Enter your dni</label>
+            <label className='font-medium uppercase'>Ingresa tu dni</label>
             <input
               onChange={onDniChange}
               className='block w-full h-10 px-2 border-b border-solid border-blue-dark outline-none'

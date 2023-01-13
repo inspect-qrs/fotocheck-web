@@ -25,4 +25,9 @@ export class PeopleService extends AppServices {
     return await this.post<Person[]>('/import-excel', file)
       .then(response => response.data)
   }
+
+  removeMultiple = async (ids: string[]): Promise<Person[]> => {
+    return await this.patch<Person[]>('/remove-multiple', { ids })
+      .then(response => response.data)
+  }
 }

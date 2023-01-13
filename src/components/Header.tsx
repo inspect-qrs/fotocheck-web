@@ -41,7 +41,9 @@ const Header = (): ReactElement => {
   return (
     <header className='bg-black shadow-md shadow-black/10 py-4 mb-4'>
       <nav className='flex items-center justify-between mx-auto w-5/6'>
-        <h4 className='text-3xl font-bold text-white invisible'>I</h4>
+        <div className='max-w-[100px]'>
+          <img className='w-full' src="/logo-blanco.png" alt="" />
+        </div>
         {
           isAboveSmallScreens
             ? desktopNav()
