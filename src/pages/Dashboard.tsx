@@ -28,7 +28,7 @@ const Dashboard = (): ReactElement => {
                     className='bg-black text-white px-5 py-2 rounded-lg text-lg'
                     onClick={() => { setIsDeleteModalShowed(!isDeleteModalShowed) }}
                   >
-                    Eliminar seleccionados
+                    { selectedRows.length > 0 ? 'Eliminar seleccionados' : 'Eliminar todo'}
                   </button>
                   <button
                     className='bg-red text-white px-5 py-2 rounded-lg text-lg'

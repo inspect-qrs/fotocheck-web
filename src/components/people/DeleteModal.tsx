@@ -21,7 +21,8 @@ const DeleteModal = ({ close, removePeople }: DeleteModalProps): ReactElement =>
 
   const handleDelete = (): void => {
     setIsLoading(true)
-    void peopleService.removeMultiple(selectedRows)
+    const deleteFunction = selectedRows.length > 0 ? deleteMultiple : deleteAll
+    void deleteFunction()
       .then(response => {
         setSelectedRows([])
         removePeople(response)
@@ -38,8 +39,17 @@ const DeleteModal = ({ close, removePeople }: DeleteModalProps): ReactElement =>
       })
   }
 
-  const modal = (
-    <>
+  const deleteMultiple = async (): Promise<Person[]> => {
+    return await peopleService.removeMultiple(selectedRows)
+  }
+
+  const deleteAll = async (): Promise<Person[]> => {
+    const people = await peopleService.findAll()
+    return await peopleService.removeMultiple(people.map(person => person.id))
+  }
+
+  return (
+    <Modal>
       {isLoading && (
         <div className='bg-gray-light absolute top-0 left-0 w-full h-full rounded-xl after:absolute after:w-10 after:h-10 after:top-0 after:right-0 after:left-0 after:bottom-0 after:m-auto after:border-8 after:border-t-white after:opacity-100 after:rounded-[50%] after:animate-spin'>
         </div>
@@ -61,22 +71,6 @@ const DeleteModal = ({ close, removePeople }: DeleteModalProps): ReactElement =>
           >Eliminar</button>
         </div>
       </div>
-    </>
-  )
-
-  return (
-    <Modal>
-      { selectedRows.length > 0
-        ? modal
-        : (
-        <div className='p-5'>
-          <p className='text-center mb-2'>No seleccionaste ningún registro</p>
-          <button
-            className='block bg-black text-white px-5 py-2 rounded-lg text-lg mx-auto'
-            onClick={close}
-          >Cancelar</button>
-        </div>
-          )}
     </Modal>
   )
 }

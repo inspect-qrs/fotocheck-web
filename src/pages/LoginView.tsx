@@ -52,9 +52,9 @@ const LoginView = (): ReactElement => {
     })
   }
   return (
-    <div className='grid place-items-center h-screen container '>
+    <div className='grid place-items-center h-screen container'>
       <div className='w-full max-w-[600px]'>
-        <div className='flex justify-center mb-5'>
+        <div className='flex justify-center mb-16'>
           <img className='max-w-[300px]' src="/logo.png" alt="" />
         </div>
         <h2 className='block uppercase font-medium text-xl'>Login</h2>
