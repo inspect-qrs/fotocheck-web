@@ -91,7 +91,7 @@ const PersonDetail = ({ id = '', dni = '' }: PersonDetailProps): ReactElement =>
           <p className='text-center font-bold uppercase text-2xl'>{date}</p>
           <div className='text-lg'>
             <p>Solo válido en las instituciones de Alicorp y subsidiarias</p>
-            <p className='text-red font-medium'>Válido para actividades de alto riesgo</p>
+            {/* <p className='text-red font-medium'>Válido para actividades de alto riesgo</p> */}
           </div>
 
           <div>
