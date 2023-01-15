@@ -97,6 +97,10 @@ const People = ({ isExcelModalShowed = false, closeExcelModal = () => { console.
     navigate(`/person?id=${id}`)
   }
 
+  const formatDate = (date: string): string => {
+    return new Date(date).toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' })
+  }
+
   const COLUMN_HEADERS: Array<Column<Person>> = [
     { Header: 'Perfil', accessor: 'profile' },
     { Header: 'Documento de Identidad', accessor: 'docType' },
@@ -105,7 +109,7 @@ const People = ({ isExcelModalShowed = false, closeExcelModal = () => { console.
     { Header: 'Apellidos', accessor: 'lastName' },
     { Header: 'Empresa', accessor: 'company' },
     { Header: 'Credencial', accessor: 'credential' },
-    { Header: 'Vigencia', accessor: 'credentialLife' }
+    { Header: 'Vigencia', accessor: row => formatDate(row.credentialLife) }
   ]
 
   const filterMobile = (): ReactElement => (
