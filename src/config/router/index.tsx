@@ -15,7 +15,7 @@ const AUTH_REQUIRED: RouteObject[] = [
     element: <Home />
   },
   {
-    path: 'dashboard',
+    path: 'admin',
     element: <Dashboard />
   }
 ]
@@ -31,11 +31,11 @@ const router = createBrowserRouter([
     children: AUTH_REQUIRED
   },
   {
-    path: 'person',
+    path: 'usuario',
     element: <PersonDetail />
   },
   {
-    path: 'people',
+    path: 'usuarios',
     element: <PeoplePublic />
   },
   {

@@ -94,7 +94,7 @@ const People = ({ isExcelModalShowed = false, closeExcelModal = () => { console.
     setPeople(people.filter(person => !peopleToRemoveDocNums.includes(person.docNum)))
   }
   const handleRowClick = (id: string): void => {
-    navigate(`/person?id=${id}`)
+    navigate(`/usuario?id=${id}`)
   }
 
   const formatDate = (date: string): string => {
