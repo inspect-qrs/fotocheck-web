@@ -8,6 +8,8 @@ import useMediaQuery from '@/hooks/UseMediaQuery'
 import { Column } from 'react-table'
 import Table from '../Table'
 import DeleteModal from './DeleteModal'
+import { useAuthStore } from '@/config/store/auth'
+import { User } from '@/types/user.interface'
 
 interface PeopleProps {
   isExcelModalShowed?: boolean
@@ -33,6 +35,13 @@ const People = ({ isExcelModalShowed = false, closeExcelModal = () => { console.
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc')
   const [filterColumn, setFilterColumn] = useState<keyof Person>('docNum')
   const [filterText, setFilterText] = useState('')
+
+  const userAuth = useAuthStore<User>((state) => state.user)
+  const [isAdmin, setIsAdmin] = useState<boolean>(false)
+
+  useEffect(() => {
+    setIsAdmin(userAuth.role === 'admin')
+  }, [userAuth])
 
   const navigate = useNavigate()
 
@@ -171,7 +180,7 @@ const People = ({ isExcelModalShowed = false, closeExcelModal = () => { console.
       <div className='mb-4'>
         {isAboveSmallScreens ? filterDesktop() : filterMobile()}
       </div>
-      <Table columns={COLUMN_HEADERS} data={filteredData} sortIcon={getSortIcon} setSortColumn={handleSortColumn} onRowClick={handleRowClick} />
+      <Table columns={COLUMN_HEADERS} data={filteredData} sortIcon={getSortIcon} setSortColumn={handleSortColumn} onRowClick={isAdmin ? handleRowClick : () => {}} />
     </main >
   )
 }

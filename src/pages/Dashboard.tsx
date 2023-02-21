@@ -1,7 +1,9 @@
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 import Header from '@/components/Header'
 import Toast from '@/components/Toast'
 import People from '@/components/people/People'
+import { useAuthStore } from '@/config/store/auth'
+import { User } from '@/types/user.interface'
 
 export const ToastContext = React.createContext({ id: '' })
 export const SelectedRowsContext = React.createContext({
@@ -14,6 +16,13 @@ const Dashboard = (): ReactElement => {
   const [isDeleteModalShowed, setIsDeleteModalShowed] = useState<boolean>(false)
   const [selectedRows, setSelectedRows] = useState<string[]>([])
 
+  const userAuth = useAuthStore<User>((state) => state.user)
+  const [isAdmin, setIsAdmin] = useState<boolean>(false)
+
+  useEffect(() => {
+    setIsAdmin(userAuth.role === 'admin')
+  }, [userAuth])
+
   return (
     <>
       <ToastContext.Provider value={{ id: 'dashboard' }}>
@@ -23,12 +32,12 @@ const Dashboard = (): ReactElement => {
             <div className=''>
               <div className='flex justify-between flex-col gap-4 sm:gap-0 sm:flex-row items-center mb-5'>
                 <h1 className='uppercase font-bold text-xl'>Usuarios</h1>
-                <div className='flex flex-col sm:flex-row gap-2'>
+                {isAdmin && (<div className='flex flex-col sm:flex-row gap-2'>
                   <button
                     className='bg-black text-white px-5 py-2 rounded-lg text-lg'
                     onClick={() => { setIsDeleteModalShowed(!isDeleteModalShowed) }}
                   >
-                    { selectedRows.length > 0 ? 'Eliminar seleccionados' : 'Eliminar todo'}
+                    {selectedRows.length > 0 ? 'Eliminar seleccionados' : 'Eliminar todo'}
                   </button>
                   <button
                     className='bg-red text-white px-5 py-2 rounded-lg text-lg'
@@ -36,7 +45,7 @@ const Dashboard = (): ReactElement => {
                   >
                     Importar Excel
                   </button>
-                </div>
+                </div>)}
               </div>
 
               <People isExcelModalShowed={isExcelModalShowed} closeExcelModal={() => { setIsExcelModalShowed(false) }} isDeleteModalShowed={isDeleteModalShowed} closeDeletelModal={() => { setIsDeleteModalShowed(false) }} />
