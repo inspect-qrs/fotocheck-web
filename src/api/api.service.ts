@@ -13,7 +13,6 @@ export abstract class AppServices {
 
   constructor (config: ApiConfig) {
     this._fullUrl = `${API_BASE_URL}/${config.url}`
-    console.log(this._fullUrl)
     this.setHeader()
   }
 
@@ -41,7 +40,6 @@ export abstract class AppServices {
   }
 
   async post <T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
-    console.log(this._fullUrl + url)
     return await axios.post(this._fullUrl + url, data, config)
       .then((response: AxiosResponse) => {
         return response
