@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
 import { createBrowserRouter, RouteObject } from 'react-router-dom'
 import Layout from '@/components/Layout'
@@ -30,14 +31,14 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: AUTH_REQUIRED
   },
-  {
-    path: 'usuario',
-    element: <PersonDetail />
-  },
-  {
-    path: 'usuarios',
-    element: <PeoplePublic />
-  },
+  // {
+  //   path: 'usuario',
+  //   element: <PersonDetail />
+  // },
+  // {
+  //   path: 'usuarios',
+  //   element: <PeoplePublic />
+  // },
   {
     path: '*',
     element: <NotFoundView />
