@@ -31,14 +31,14 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: AUTH_REQUIRED
   },
-  // {
-  //   path: 'usuario',
-  //   element: <PersonDetail />
-  // },
-  // {
-  //   path: 'usuarios',
-  //   element: <PeoplePublic />
-  // },
+  {
+    path: 'usuario',
+    element: <PersonDetail />
+  },
+  {
+    path: 'usuarios',
+    element: <PeoplePublic />
+  },
   {
     path: '*',
     element: <NotFoundView />
